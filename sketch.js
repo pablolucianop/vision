@@ -3,7 +3,13 @@ let aa =0
 let posterLevels =5
 function setup() {
 
+
+  
   createCanvas(320, 540);
+  button = createButton('guardar');
+  button.mousePressed(guardar);
+  button.position(0, 600);
+
   button = createButton('click me');
   button.mousePressed(changeBG);
   button.position(0, 0);
@@ -26,7 +32,10 @@ function setup() {
     } 
   function plusPosterLevels() {
     posterLevels ++
-  }   
+  }  
+  function guardar() {
+     saveFrames('out', 'png', 1, 1);
+  } 
   function minusPosterLevels() {
     posterLevels --
   }  
@@ -46,7 +55,7 @@ function draw() {
   image(capture, 0,240, 320, 240);
   pop();
  
-
+  img = loadImage('assets/moonwalk.jpg'); // Cargar la imagen
 
 
 
