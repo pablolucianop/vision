@@ -37,10 +37,6 @@ function setup() {
   button.position(0, heigthCamera*2+ 60);
 
 
-  button = createButton('cama');
-  button.mousePressed(changeCamera);
-  button.position(200, heigthCamera*2+ 60);
-
   button = createButton('guardar');
   button.mousePressed(guardar);
   button.position(0, heigthCamera*2);
