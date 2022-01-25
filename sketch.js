@@ -5,6 +5,8 @@ let heigthCamera = 240
 let lengtCamera = 240* 1.333
 let mobile = false
 let mirror = 1
+let environment = true
+let constraints
 
 function setup() {
 
@@ -16,7 +18,7 @@ function setup() {
   button.position(0, heigthCamera*2+ 60);
 
 
-  button = createButton('cam');
+  button = createButton('cami');
   button.mousePressed(changeCamera);
   button.position(200, heigthCamera*2+ 60);
 
@@ -61,21 +63,22 @@ function setup() {
   }  
 
     function changeCamera() {
-
-
-
-      if(constraints.video.facingMode.exact=== "environment"
-       ){
-        constraints.video.facingMode =  "user"
-        mirror = -1
-        console.log('user')
+      if(!environment){
+        constraints = {
+          audio: false,
+          video: {
+            facingMode: {
+              exact: "environment"
+            }
+          }    
+        }
+        
+        alert('environment')
       }else{
-        constraints.video.facingMode = {
-        exact: "environment"
+     constraints = VIDEO
+      alert('video')
       }
-      mirror = 1
-      console.log('environment')
-      }
+      !environment
     
   } 
 
