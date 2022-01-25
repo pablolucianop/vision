@@ -16,7 +16,7 @@ function setup() {
   button.position(0, heigthCamera*2+ 60);
 
 
-  button = createButton('cama');
+  button = createButton('cam');
   button.mousePressed(changeCamera);
   button.position(200, heigthCamera*2+ 60);
 
