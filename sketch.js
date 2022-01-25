@@ -4,7 +4,7 @@ let posterLevels =5
 let heigthCamera = 240
 let lengtCamera = 240* 1.333
 let mobile = false
-let mirror = -1
+let mirror = 1
 
 function setup() {
 
@@ -62,7 +62,7 @@ function setup() {
 
     function changeCamera() {
 
-       constraints.video.facingMode =  "user"
+
 
       if(constraints.video.facingMode.exact=== "environment"
        ){
