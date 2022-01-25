@@ -16,7 +16,7 @@ function setup() {
   button.position(0, heigthCamera*2+ 60);
 
 
-  button = createButton('cam');
+  button = createButton('camo');
   button.mousePressed(changeCamera);
   button.position(200, heigthCamera*2+ 60);
 
@@ -37,14 +37,14 @@ function setup() {
   button.mousePressed(minusPosterLevels);
   var constraints = {
     audio: false,
+    // video: {
+    //   facingMode: {
+    //     exact: "environment"
+    //   }
+    // }    
     video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }    
-    //video: {
-      //facingMode: "user"
-    //} 
+      facingMode: "user"
+    } 
   };
 
 
@@ -64,20 +64,16 @@ function setup() {
       if(constraints.video.facingMode.exact=== "environment"
        ){
         constraints.video.facingMode =  "user"
-
-
       }else{
         constraints.video.facingMode = {
         exact: "environment"
       }
       }
-    
   } 
 
   function guardar() {
      saveFrames('out', 'jpg', 1, 1);
   } 
-
   function prop() {
     mobile = !mobile
     console.log('mobile', mobile)
@@ -89,25 +85,24 @@ function setup() {
 
 function draw() {
 
-let temp;
+  let temp;
 
-if(mobile){
+  if(mobile){
 
-lengtCamera = 240
-heigthCamera = lengtCamera* 1.333
-}else{
-heigthCamera = 240
-lengtCamera = heigthCamera* 1.333
-}
-
+  lengtCamera = 240
+  heigthCamera = lengtCamera* 1.333
+  }else{
+  heigthCamera = 240
+  lengtCamera = heigthCamera* 1.333
+  }
 
   image(capture, 0, 0, lengtCamera, heigthCamera);
   background(100);
   push();
   translate(width,0);
-  scale(mirror, 1);
+  scale(1, 1);
 
-    image(capture, aa,0, lengtCamera, heigthCamera);
+  image(capture, aa,0, lengtCamera, heigthCamera);
   
   filter(GRAY);
   filter(POSTERIZE, posterLevels)
