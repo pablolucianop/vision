@@ -6,7 +6,6 @@ let lengtCamera = 240* 1.333
 let mobile = false
 let mirror = -1
 
-var capture;
 let switchFlag = false;
 let switchBtn;
 
