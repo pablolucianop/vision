@@ -16,7 +16,7 @@ function setup() {
   button.position(0, heigthCamera*2+ 60);
 
 
-  button = createButton('camo');
+  button = createButton('cama');
   button.mousePressed(changeCamera);
   button.position(200, heigthCamera*2+ 60);
 
@@ -37,18 +37,18 @@ function setup() {
   button.mousePressed(minusPosterLevels);
   var constraints = {
     audio: false,
-    // video: {
-    //   facingMode: {
-    //     exact: "environment"
-    //   }
-    // }    
     video: {
-      facingMode: "user"
-    } 
+      facingMode: {
+        exact: "environment"
+      }
+    }    
+    // video: {
+    //   facingMode: "user"
+    // } 
   };
 
 
-  capture = createCapture(constraints);
+  capture = createCapture(VIDEO);
   capture.size(320, 240);
   capture.hide();
   
