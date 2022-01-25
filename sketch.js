@@ -14,6 +14,11 @@ function setup() {
   button.mousePressed(prop);
   button.position(0, heigthCamera*2+ 60);
 
+
+  button = createButton('cam');
+  button.mousePressed(changeCamera);
+  button.position(200, heigthCamera*2+ 60);
+
   button = createButton('guardar');
   button.mousePressed(guardar);
   button.position(0, heigthCamera*2);
@@ -29,8 +34,20 @@ function setup() {
   button = createButton('-');
   button.position(250, 0);
   button.mousePressed(minusPosterLevels);
+  var constraints = {
+    audio: false,
+    video: {
+      facingMode: {
+        exact: "environment"
+      }
+    }    
+    //video: {
+      //facingMode: "user"
+    //} 
+  };
 
-  capture = createCapture(VIDEO);
+
+  capture = createCapture(constraints);
   capture.size(320, 240);
   capture.hide();
   
@@ -41,6 +58,21 @@ function setup() {
   function plusPosterLevels() {
     posterLevels ++
   }  
+
+    function changeCamera() {
+      if(constraints.video.facingMode=== {
+        exact: "environment"
+      } ){
+        constraints.video.facingMode =  "user"
+
+      }else{
+        constraints.video.facingMode = {
+        exact: "environment"
+      }
+      }
+    
+  } 
+
   function guardar() {
      saveFrames('out', 'jpg', 1, 1);
   } 
@@ -80,6 +112,7 @@ lengtCamera = heigthCamera* 1.333
   filter(POSTERIZE, posterLevels)
   image(capture, 0,heigthCamera, lengtCamera, heigthCamera);
   pop();
+
  
 
 
