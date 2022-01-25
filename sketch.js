@@ -6,9 +6,31 @@ let lengtCamera = 240* 1.333
 let mobile = false
 let mirror = -1
 
+var capture;
+let switchFlag = false;
+let switchBtn;
+
+var options = {
+     video: {
+        
+         facingMode: {
+          exact: "user"
+        }
+     }
+   };
+
+
+
 function setup() {
 
+  capture = createCapture(options);
+  capture.size(320, 240);
+  capture.hide();
 
+
+  switchBtn = createButton('Switch Camera');
+  switchBtn.position(19, 19);
+  switchBtn.mousePressed(switchCamera);
   
   createCanvas(320, 700);
   button = createButton('prop');
@@ -48,9 +70,8 @@ function setup() {
   };
 
 
-  capture = createCapture(VIDEO);
-  capture.size(320, 240);
-  capture.hide();
+
+
   
   function changeBG() {
     if(aa===0)
@@ -60,16 +81,38 @@ function setup() {
     posterLevels ++
   }  
 
-    function changeCamera() {
-      if(constraints.video.facingMode.exact=== "environment"
-       ){
-        constraints.video.facingMode =  "user"
-      }else{
-        constraints.video.facingMode = {
-        exact: "environment"
-      }
-      }
-  } 
+function switchCamera()
+{
+  switchFlag = !switchFlag;
+  if(switchFlag==true)
+  {
+   capture.remove();
+   options = {
+     video: {
+        
+         facingMode: {
+          exact: "environment"
+        }
+     }
+   };
+
+  }
+  else
+  {
+   capture.remove();
+   options = {
+     video: {
+        
+         facingMode: {
+          exact: "user"
+        }
+     }
+   };
+    
+  }
+  capture = createCapture(options);
+  
+}
 
   function guardar() {
      saveFrames('out', 'jpg', 1, 1);
@@ -115,3 +158,9 @@ function draw() {
 
 
 }
+
+
+
+
+
+
