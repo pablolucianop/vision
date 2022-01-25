@@ -4,9 +4,7 @@ let posterLevels =5
 let heigthCamera = 240
 let lengtCamera = 240* 1.333
 let mobile = false
-let mirror = 1
-let environment = true
-let constraints
+let mirror = -1
 
 function setup() {
 
@@ -18,7 +16,7 @@ function setup() {
   button.position(0, heigthCamera*2+ 60);
 
 
-  button = createButton('cami');
+  button = createButton('cam');
   button.mousePressed(changeCamera);
   button.position(200, heigthCamera*2+ 60);
 
@@ -63,22 +61,16 @@ function setup() {
   }  
 
     function changeCamera() {
-      if(!environment){
-        constraints = {
-          audio: false,
-          video: {
-            facingMode: {
-              exact: "environment"
-            }
-          }    
-        }
-        
-        alert('environment')
+      if(constraints.video.facingMode.exact=== "environment"
+       ){
+        constraints.video.facingMode =  "user"
+
+
       }else{
-     constraints = VIDEO
-      alert('video')
+        constraints.video.facingMode = {
+        exact: "environment"
       }
-      !environment
+      }
     
   } 
 
