@@ -43,6 +43,7 @@ function switchCamera()
     
   }
   capture = createCapture(options);
+    scale(-1, 1);
   
 }
 
